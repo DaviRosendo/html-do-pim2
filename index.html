@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Mensalidades e Matrículas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4B0082; /* Fundo roxo escuro */
+            margin: 0;
+            padding: 20px;
+            color: #FFFFFF; /* Texto em branco para contraste */
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #FFFFFF; /* Fundo branco para as seções */
+            color: #333333; /* Texto escuro para melhor leitura */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h2, h3 {
+            text-align: center;
+            color: #FFFFFF; /* Título em branco */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #7e9383;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #7e9383;
+        }
+        .info {
+            background-color: #7e9383;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .info p {
+            margin: 0;
+        }
+        .grade-table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        .grade-table th, .grade-table td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .grade-table th {
+            background-color: #333333;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Título -->
+    <h2>Sistema de Mensalidades e Matrículas</h2>
+
+    <!-- Seção de Cadastro/Login -->
+    <section id="cadastro">
+        <h3>Cadastro e Login</h3>
+        <form action="cadastrar_usuario.php" method="POST">
+            <div class="form-group">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group btn-group">
+                <input type="submit" value="Cadastrar">
+                <input type="submit" formaction="login_usuario.php" value="Entrar">
+                <style>
+                    .btn-group {
+                        display: flex; /* Exibe os botões em linha */
+                        gap: 10px; /* Espaçamento entre os botões */
+                        justify-content: center; /* Centraliza os botões */
+                    }
+                    .btn-group input[type="submit"] {
+                        flex: 1; /* Tamanhos iguais para os botões */
+                        padding: 10px; /* Espaçamento interno */
+                        font-size: 16px;
+                        background-color: #7e9383;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                    .btn-group input[type="submit"]:hover {
+                        background-color: #6d8275; /* Cor mais escura no hover */
+                    }
+                </style>
+                
+            </div>
+            <div class="forgot-password">
+                <a href="#esqueci-senha">Esqueceu a senha?</a>
+            </div>
+        </form>
+    </section>
+
+    <!-- Botão Fazer Matrícula -->
+    <div class="form-group" style="text-align: center; margin-top: 20px;">
+        <input type="button" onclick="location.href='#matricula'" value="Fazer Matrícula" style="background-color: #7e9383; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+    </div>
+
+    <!-- Seção de Matrícula -->
+    <section id="matricula">
+        <h3>Matrícula</h3>
+        <form action="realizar_matricula.php" method="POST">
+            <div class="form-group">
+                <label for="modalidade">Escolha a Modalidade:</label>
+                <select id="modalidade" name="modalidade" required>
+                    <option value="">Selecione uma modalidade</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="ead">EAD</option>
+                    <option value="hibrido">Híbrido</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Realizar Matrícula">
+            </div>
+        </form>
+
+        <h4>Grade de Cursos</h4>
+        <table class="grade-table">
+            <tr>
+                <th>Curso</th>
+                <th>Modalidade</th>
+                <th>Duração</th>
+                <th>Valor Mensalidade</th>
+            </tr>
+            <tr>
+                <td>Administração</td>
+                <td>Presencial</td>
+                <td>8 semestres</td>
+                <td>R$ 800,00</td>
+            </tr>
+            <tr>
+                <td>Direito</td>
+                <td>Presencial</td>
+                <td>10 semestres</td>
+                <td>R$ 1.200,00</td>
+            </tr>
+            <tr>
+                <td>Engenharia de Produção</td>
+                <td>Híbrido</td>
+                <td>10 semestres</td>
+                <td>R$ 950,00</td>
+            </tr>
+            <tr>
+                <td>Ciências Contábeis</td>
+                <td>EAD</td>
+                <td>8 semestres</td>
+                <td>R$ 700,00</td>
+            </tr>
+            <tr>
+                <td>Pedagogia</td>
+                <td>EAD</td>
+                <td>8 semestres</td>
+                <td>R$ 650,00</td>
+            </tr>
+            <tr>
+                <td>Engenharia Civil</td>
+                <td>Presencial</td>
+                <td>10 semestres</td>
+                <td>R$ 1.300,00</td>
+            </tr>
+            <tr>
+                <td>Enfermagem</td>
+                <td>Presencial</td>
+                <td>10 semestres</td>
+                <td>R$ 1.100,00</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Seção de Pagamento -->
+    <section id="pagamento">
+        <h3>Pagar Mensalidade</h3>
+        <form action="https://www.sua-plataforma-de-pagamento.com" method="POST">
+            <div class="form-group">
+                <label for="discount_type">Escolha o Tipo de Desconto:</label>
+                <select id="discount_type" name="discount_type" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="prouni">Prouni</option>
+                    <option value="enem">Enem</option>
+                    <option value="sisu">Sisu</option>
+                    <option value="vestibular">Vestibular</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="score">Informe sua Nota:</label>
+                <input type="number" id="score" name="score" min="0" max="1000" step="0.01" required>
+                <small>O valor do desconto será calculado com base na sua nota.</small>
+            </div>
+            <div class="form-group">
+                <label for="month">Selecione o Mês da Mensalidade:</label>
+                <select id="month" name="month" required>
+                    <option value="january">Janeiro</option>
+                    <option value="february">Fevereiro</option>
+                    <option value="march">Março</option>
+                    <option value="april">Abril</option>
+                    <option value="may">Maio</option>
+                    <option value="june">Junho</option>
+                    <option value="july">Julho</option>
+                    <option value="august">Agosto</option>
+                    <option value="september">Setembro</option>
+                    <option value="october">Outubro</option>
+                    <option value="november">Novembro</option>
+                    <option value="december">Dezembro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="payment_method">Forma de Pagamento:</label>
+                <select id="payment_method" name="payment_method" required>
+                    <option value="boleto">Boleto</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                    <option value="pix">PIX</option>
+                    <option value="transferencia">Transferência Bancária</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Efetuar Pagamento">
+            </div>
+        </form>
+    </section>
+</div>
+
+</body>
+</html>
